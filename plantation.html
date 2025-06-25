@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crop Status</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            max-width: 400px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        button {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: green;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: darkgreen;
+        }
+    </style>
+</head>
+<body style="background-image: url('images/Form.jpeg'); background-size: cover; background-position: center; background-repeat: no-repeat; height: 100vh;">
+    
+ <center>
+    <div class="container">
+        <h2>Crop Status</h2>
+        <form>
+            <label>
+                <input type="radio" name="cropStatus" value="planted"> Already Planted
+            </label>
+            <br>
+            <label>
+                <input type="radio" name="cropStatus" value="planning"> going to Plant
+            </label>
+            <br>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</center>
+</body>
+</html>

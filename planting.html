@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Planting Type - Farm Management</title>
+    <link rel="stylesheet" href="soil.css"> <!-- Link to external stylesheet -->
+    <style>
+        .container {
+            text-align: center;
+            margin-top: 100px;
+        }
+
+        .form-box {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 30px;
+            border-radius: 10px;
+            display: inline-block;
+        }
+
+        select {
+            font-size: 18px;
+            padding: 8px;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            background-color: green;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: darkgreen;
+        }
+    </style>
+</head>
+
+<body style="background-image: url('images/Form.jpeg'); background-size: cover; background-position: center; background-repeat: no-repeat; height: 100vh;">
+
+    <!-- Navigation Bar -->
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="market_sales.html">Market Sales</a></li>
+        </ul>
+    </nav>
+
+    <!-- Planting Type Selection -->
+    <div class="container">
+        <h1>Select Planting Type</h1>
+        <p>Choose whether you want to plant long-term crops or short-term crops.</p>
+
+        <div class="form-box">
+            <form id="planting-form">
+                <label for="planting-type">Select Planting Type:</label>
+                <select id="planting-type" name="planting_type" required>
+                    <option value="">-- Select an Option --</option>
+                    <option value="long-term">Long-Term Planting</option>
+                    <option value="short-term">Short-Term Planting</option>
+                </select>
+                <br>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Farm Management. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        document.getElementById("planting-form").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent form submission
+
+            const plantingType = document.getElementById("planting-type").value;
+
+            if (plantingType === "long-term") {
+                window.location.href = "long_term.html"; // Redirect to Long-Term page
+            } else if (plantingType === "short-term") {
+                window.location.href = "short_term.html"; // Redirect to Short-Term page
+            } else {
+                alert("Please select a planting type.");
+            }
+        });
+    </script>
+
+</body>
+
+</html>
+

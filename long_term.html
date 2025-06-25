@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Planting Type - Farm Management</title>
+    <link rel="stylesheet" href="soil.css"> <!-- Link to external stylesheet -->
+    <style>
+        .container {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .form-box {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 30px;
+            border-radius: 10px;
+            display: inline-block;
+            text-align: left;
+        }
+
+        select, button {
+            font-size: 18px;
+            padding: 8px;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        button {
+            cursor: pointer;
+            background-color: green;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: darkgreen;
+        }
+
+        .suggestions {
+            display: none;
+            margin-top: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        ul li {
+            padding: 5px 0;
+        }
+    </style>
+</head>
+
+<body style="background-image: url('images/Form.jpeg'); background-size: cover; background-position: center; background-repeat: no-repeat; height: 100vh;">
+
+    <!-- Navigation Bar -->
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="market_sales.html">Market Sales</a></li>
+        </ul>
+    </nav>
+
+    <!-- Planting Type Selection -->
+    <div class="container">
+        <h1>Select Planting Type</h1>
+        <p>Choose whether you want to plant long-term crops or short-term crops.</p>
+
+        <div class="form-box">
+            <form id="planting-form">
+                <label for="planting-type">Select Planting Type:</label>
+                <select id="planting-type" name="planting_type" required>
+                    <option value="">-- Select an Option --</option>
+                    <option value="long-term">Long-Term Planting</option>
+                    <option value="short-term">Short-Term Planting</option>
+                </select>
+                <br>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+
+        <!-- Suggestions Box (Appears for Long-Term Planting) -->
+        <div id="suggestions-box" class="suggestions">
+            <h3>Recommended Crops & Fertilizers</h3>
+            <h4>Crops:</h4>
+            <ul id="crop-list"></ul>
+            <h4>Growth Fertilizers:</h4>
+            <ul>
+                <li>Potassium</li>
+                <li>Urea</li>
+                <li>Sodium</li>
+                <li>Wood Ash</li>
+                <li>Compost</li>
+            </ul>
+        </div>
+    </div>
+<br>
+<br>
+    <!-- Footer -->
+   
+    <script>
+        document.getElementById("planting-form").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent form submission
+
+            const plantingType = document.getElementById("planting-type").value;
+            const suggestionsBox = document.getElementById("suggestions-box");
+            const cropList = document.getElementById("crop-list");
+
+            if (plantingType === "long-term") {
+                // Show the suggestion box
+                suggestionsBox.style.display = "block";
+                
+                // Populate crop list for long-term planting
+                cropList.innerHTML = `
+                    <li>Tea</li>
+                    <li>Coconut</li>
+                    <li>Mango</li>
+                    <li>Areca Nut Palm</li>
+                    <li>Sapota</li>
+                `;
+            } else if (plantingType === "short-term") {
+                window.location.href = "short_term.html"; // Redirect to Short-Term page
+            } else {
+                alert("Please select a planting type.");
+            }
+        });
+    </script>
+
+</body>
+
+</html>

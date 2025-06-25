@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agrimate - Login</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to external stylesheet -->
+    <script src="scripts.js"></script> <!-- Link to JavaScript -->
+</head>
+
+<body style="background-image: url('images/Form.jpeg'); background-size: cover; background-position: center; background-repeat: no-repeat; height: 100vh;">
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+        </ul>
+    </nav>
+
+    <!-- Login Form -->
+    <div class="login-container">
+        <h1>LOGIN AGRIMATE</h1>
+        <form onsubmit="return auth(event)">  <!-- Prevents form submission -->
+            <label for="name"></label>
+            <input type="text" id="name" name="name" required placeholder="Enter your full name">
+
+            <label for="email"></label>
+            <input type="email" id="email" name="email" required placeholder="Enter your email">
+
+            <label for="phone"></label>
+            <input type="tel" id="phone" name="phone" required placeholder="Enter your phone number">
+
+            <label for="password"></label>
+            <input type="password" id="password" name="password" required placeholder="Enter your password">
+
+            <!-- Login Button (Submit the form) -->
+            <button type="submit">Login</button>
+        </form>
+        <p>Don't have an account? <a href="register.html">Sign up here</a></p>
+    </div>
+
+    <script>
+        function auth(event) {
+            event.preventDefault(); // Prevents form submission
+
+            var email = document.getElementById('email').value;
+            var password = document.getElementById('password').value;
+
+            if (email === 'kk1106726@gmail.com' && password === 'Keerthi123') {
+                
+                window.location.href = "soil_information.html"; // Redirect to next page
+                return true;
+            } else {
+                alert("Invalid information. Please try again.");
+                return false;
+            }
+        }
+    </script>
+
+</body>
+</html>

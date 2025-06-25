@@ -1,0 +1,68 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Container for the form */
+.land-selection-container {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 300px;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+/* Labels and Select Box */
+label {
+    font-size: 16px;
+    font-weight: bold;
+    display: block;
+    margin: 10px 0 5px;
+}
+
+select, input {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+/* Submit Button */
+a {
+    display: inline-block;
+    text-decoration: none;
+    background-color: #28a745;
+    color: white;
+    padding: 10px 15px;
+    margin-top: 15px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+a:hover {
+    background-color: #218838;
+}
+
+/* Footer */
+footer {
+    position: absolute;
+    bottom: 10px;
+    text-align: center;
+    color: white;
+    font-size: 14px;
+}
