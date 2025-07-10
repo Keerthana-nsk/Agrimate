@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: "Helvetica", sans-serif;
+            font-size: 14px;
+            padding: 30px;
+            color: #333;
+        }
+
+        .header {
+            text-align: center;
+            border-bottom: 2px solid #2d6a4f;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+
+        .logo {
+            width: 100px;
+        }
+
+        h2 {
+            color: #2d6a4f;
+            margin-top: 10px;
+        }
+
+        .info {
+            margin: 20px 0;
+            border: 1px solid #b7e4c7;
+            padding: 20px;
+            border-radius: 8px;
+            background: #f0fdf4;
+        }
+
+        .info p {
+            margin: 10px 0;
+        }
+
+        .footer {
+            margin-top: 40px;
+            text-align: center;
+            font-style: italic;
+            font-size: 13px;
+            color: #555;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Agrimate Logo" class="logo">
+        <h2>{{ trans['summary_title'] if 'summary_title' in trans else 'Crop Summary Report' }}</h2>
+    </div>
+
+    <div class="info">
+        <p><strong>{{ trans['name'] }}:</strong> {{ session.get('username', 'N/A') }}</p>
+        <p><strong>{{ trans['email'] }}:</strong> {{ session.get('email', 'N/A') }}</p>
+        <p><strong>{{ trans['crop'] }}:</strong> {{ session.get('crop', 'N/A') }}</p>
+        <p><strong>{{ trans['land_type'] }}:</strong> {{ session.get('land_type', 'N/A') }}</p>
+        <p><strong>{{ trans['season'] }}:</strong> {{ session.get('season', 'N/A') }}</p>
+        <p><strong>{{ trans['predicted_price'] }}:</strong> ₹{{ price }} per unit</p>
+    </div>
+
+    <div class="footer">
+        {{ trans['thank_you'] if 'thank_you' in trans else 'Thank you for using Agrimate – A Farmer’s Friend' }}
+    </div>
+
+</body>
+</html>
+

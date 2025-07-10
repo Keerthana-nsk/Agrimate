@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ trans['crop_fertilizer_title'] }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    
+</head>
+<style>
+
+        h2 {
+            font-size: 2em;
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        form {
+            margin-top: 30px;
+        }
+        select {
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 5px;
+            margin-left: 10px;
+}
+
+    .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 40px;
+            width: 100%;
+            max-width: 600px;
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.15);
+            text-align: center;
+            margin-right:20px;
+            margin-top: 20px;
+}
+
+
+        .image-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 20px;
+            justify-content: center;
+            margin: 30px auto;
+            max-width: 800px;
+        }
+
+        .image-options label {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .image-options label:hover {
+            background: #e9f5ec;
+            border-color: #40916c;
+            transform: scale(1.05);
+        }
+
+        .image-options input[type="radio"] {
+            display: none;
+        }
+
+        .image-options img {
+                width: 80px;
+                height: 80px;
+                object-fit: cover;
+                border-radius: 8px;
+                margin-bottom: 8px;
+        }
+
+        .image-options input[type="radio"]:checked + img {
+            border: 4px solid #2d6a4f;
+            transform: scale(1.05);
+        }
+
+        button {
+            background: linear-gradient(to right, #00c6ff, #0072ff);
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            font-size: 15px;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            font-weight: bold;
+            margin-left: 5px;
+            align-items: center;
+        }
+
+        button:hover {
+            background: linear-gradient(to right, #0072ff, #00c6ff);
+        }
+
+        .recommend-box {
+
+            margin-top: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            color: black;
+            padding: 12px;
+            border-radius: 10px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+    </style>
+<body>
+    <h2>{{ trans['crop_fertilizer_title'] }}</h2>
+    <form method="POST">
+
+        <div class="image-options">
+            <label>
+                <input type="radio" name="crop" value="tea" required>
+                <img src="{{ url_for('static', filename='images/tea.jpg') }}">
+                <span>{{ trans['tea'] }}</span>
+            </label>
+            <label>
+                <input type="radio" name="crop" value="tomato">
+                <img src="{{ url_for('static', filename='images/tomato.jpg') }}">
+                <span>{{ trans['tomato'] }}</span>
+            </label>
+            <label>
+                <input type="radio" name="crop" value="coconut">
+                <img src="{{ url_for('static', filename='images/coconut.jpg') }}">
+                <span>{{ trans['coconut'] }}</span>
+            </label>
+            <label>
+                <input type="radio" name="crop" value="mango">
+                <img src="{{ url_for('static', filename='images/mango.jpg') }}">
+                <span>{{ trans['mango'] }}</span>
+            </label>
+            <label>
+                <input type="radio" name="crop" value="sweet_potato">
+                <img src="{{ url_for('static', filename='images/sweet_potato.jpg') }}">
+                <span>{{ trans['sweet_potato'] }}</span>
+            </label>
+            <label>
+                <input type="radio" name="crop" value="ladies_finger">
+                <img src="{{ url_for('static', filename='images/ladies_finger.jpg') }}">
+                <span>{{ trans['ladies_finger'] }}</span>
+            </label>
+            <label>
+                <input type="radio" name="crop" value="brinjal">
+                <img src="{{ url_for('static', filename='images/brinjal.jpg') }}">
+                <span>{{ trans['brinjal'] }}</span>
+            </label>
+            <label>
+                <input type="radio" name="crop" value="greens">
+                <img src="{{ url_for('static', filename='images/greens.jpg') }}">
+                <span>{{ trans['greens'] }}</span>
+            </label>
+        </div>
+        <div class="container">
+            <label>{{ trans.select_fertilizer }}</label>
+            <select name="fertilizer" required>
+                <option value="" disabled selected>{{ trans.select_option }}</option>
+                <option value="growth">{{ trans.growth }}</option>
+                <option value="disease">{{ trans.disease }}</option>
+            </select>
+            <button type="submit">{{ trans.next_btn }}</button>
+        </div>
+        
+        {% if recommendation %}
+        <div class="recommend-box">
+                {{ recommendation }}
+        </div>
+            <a href="{{ url_for('market_sales') }}">
+                <button type="button">{{ trans['📊 Go to Market Sales'] }}</button>
+            </a>
+        {% else %}
+            <button type="submit">{{ trans['submit'] }}</button>
+        {% endif %}
+    </div>
+    </form>
+</body>
+</html>

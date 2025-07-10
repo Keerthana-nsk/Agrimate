@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ trans.planting_type_title }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+    <style>
+        .form-box {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 40px;
+            width: 100%;
+            max-width: 500px;
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.15);
+            text-align: center;
+        }
+
+        h2 {
+            color: #2e8b57;
+            margin-bottom: 20px;
+        }
+
+        select {
+            width: 100%;
+            padding: 10px;
+            font-size: 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        button {
+            background: linear-gradient(to right, #00c6ff, #0072ff);
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            font-size: 15px;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background: linear-gradient(to right, #0072ff, #00c6ff);
+        }
+        .recommendation {
+            margin-bottom: 25px;
+            font-weight: bold;
+            font-size: 1.1em;
+            color: white;
+        }
+        .recommend{
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 20px;
+            width: 100%;
+            max-width: 500px;
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.15);
+            text-align: center;
+            margin-right:20px;
+            margin-top:10px;
+        }
+    </style>
+
+<body>
+    <div class="form-box">
+        <h2>{{ trans.planting_type_title }}</h2>
+        <form method="POST" action="{{ url_for('planting_type') }}">
+            <label>{{ trans.select_planting_type }}</label>
+            <select name="planting_type" required>
+                <option value="" disabled selected>{{ trans.select_option }}</option>
+                <option value="long">{{ trans.long_term }}</option>
+                <option value="short">{{ trans.short_term }}</option>
+            </select>
+            <button type="submit">{{ trans.next_btn }}</button>
+        </form>
+
+        {% if recommendation %}
+        <div class="recommend-box">
+                {{ recommendation }}
+        </div>
+            <a href="{{ url_for('market_sales') }}">
+                <button type="button">{{ trans['next'] }}</button>
+            </a>
+        {% else %}
+            <button type="submit">{{ trans['submit'] }}</button>
+        {% endif %}
+        </div>
+</body>
+</html>

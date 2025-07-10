@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ trans['land_title'] }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+   <script>
+        function selectLand(type) {
+            document.getElementById('land_type').value = type;
+
+            const boxes = document.querySelectorAll('.land-box');
+            boxes.forEach(box => box.classList.remove('selected'));
+
+            document.getElementById('box-' + type).classList.add('selected');
+        }
+    </script>
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        padding: 30px;
+    }
+    .container {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    padding: 40px;
+    width: 100%;
+    max-width: 600px;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    margin-right:20px;
+}
+
+    h2 {
+        font-size: 2em;
+        margin-bottom: 20px;
+        color: #1b4332;
+    }
+    p{
+        font-family: Arial, Helvetica, sans-serif;
+        text-decoration: #a3a3a3;
+        line-height: 1.6;
+    }
+
+    label {
+        font-weight: bold;
+        display: block;
+        margin-top: 2px;
+        margin-bottom: 2px;
+        color: #2d6a4f;
+    }
+
+    label p{
+        font-weight: bold;
+        display: block;
+        margin-bottom: 2px;
+        color: white;
+    }
+
+    input[type="text"],
+    input[type="file"] {
+        padding: 10px;
+        width: 90%;
+        max-width: 400px;
+        margin: 5px auto;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        font-size: 16px;
+        display: block;
+        margin-bottom: 2px;
+    }
+
+    .image-grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 25px;
+        margin-top: 20px;
+    }
+
+    .land-box {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        cursor: pointer;
+        border: 2px solid transparent;
+        padding: 12px;
+        border-radius: 10px;
+        transition: 0.3s;
+        background-color: #ffffff;
+        width: 160px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .land-box img {
+        width: 100%;
+        height: 120px;
+        object-fit: cover;
+        border-radius: 8px;
+        margin-bottom: 10px;
+    }
+
+    .land-box p {
+        font-weight: bold;
+        font-size: 14px;
+        color: #333;
+    }
+
+    .land-box:hover {
+        background-color: #e0f4e9;
+        border-color: #40916c;
+        transform: scale(1.03);
+    }
+
+    .land-box.selected {
+        border: 3px solid #2d6a4f;
+        background-color: #d8f3dc;
+    }
+
+    button {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 30px;
+            font-size: 1rem;
+            background: linear-gradient(to right, #00c6ff, #0072ff);
+            color: white;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            margin-top: 5px;
+    }
+
+    button:hover {
+        background: linear-gradient(to right, #0072ff, #00c6ff);
+    }
+</style>
+<body>
+    <div class="container">
+        <h2>{{ trans['select_land_type'] }}</h2>
+        <form method="POST" enctype="multipart/form-data">
+
+            <label>{{ trans['land_area'] }}</label><br>
+            <input type="text" name="area" placeholder="{{ trans['area_placeholder'] }}" required><br><br>
+
+            <label>{{ trans['upload_image'] }}</label><br>
+            <input type="file" name="land_image" accept="image/*"><br><br>
+    </div>
+            <div class="image-grid">
+                <label>
+                <p>{{ trans['click_land_type'] }}</p>
+                </label>
+                <label>
+                <div class="land-box" id="box-arable" onclick="selectLand('arable')">
+                    <img src="{{ url_for('static', filename='images/arable.jpg') }}" alt="Arable">
+                    <p>{{ trans['arable'] }}</p>
+                </div>
+                </label>
+                <label>
+                <div class="land-box" id="box-plantation" onclick="selectLand('plantation')">
+                    <img src="{{ url_for('static', filename='images/plantation.jpg') }}" alt="Plantation">
+                    <p>{{ trans['plantation'] }}</p>
+                </div>
+                </label>
+                <label>
+                <div class="land-box" id="box-pastoral" onclick="selectLand('pastoral')">
+                    <img src="{{ url_for('static', filename='images/pastoral.jpg') }}" alt="Pastoral">
+                    <p>{{ trans['pastoral'] }}</p>
+                </div>
+                </label>
+                <label>
+                <div class="land-box" id="box-horticultural" onclick="selectLand('horticultural')">
+                    <img src="{{ url_for('static', filename='images/horticultural.jpg') }}" alt="Horticultural">
+                    <p>{{ trans['horticultural'] }}</p>
+                </div>
+                </label>
+                <label>
+                <div class="land-box" id="box-wetland" onclick="selectLand('wetland')">
+                    <img src="{{ url_for('static', filename='images/wetland.jpg') }}" alt="Wetland">
+                    <p>{{ trans['wetland'] }}</p>
+                </div>
+                </label>
+            </div>
+
+            <input type="hidden" name="land_type" id="land_type" required>
+            <button type="submit">{{ trans['next'] }}</button>
+        </form>
+</body>
+</html>

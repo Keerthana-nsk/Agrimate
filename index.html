@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Agrimate Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<style>
+    /* Centered container */
+.container {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    padding: 40px;
+    width: 100%;
+    max-width: 600px;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    margin-right:20px;
+}
+h1 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+h2 {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+/* Form styles */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 10px;
+}
+/* Buttons */
+button {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 30px;
+    font-size: 1rem;
+    background: linear-gradient(to right, #00c6ff, #0072ff);
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background: linear-gradient(to right, #0072ff, #00c6ff);
+}
+/* Language select dropdown */
+select {
+    cursor: pointer;
+}
+
+/* Footer */
+footer {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+/* About section */
+.about-section {
+    margin-top: 30px;
+    background-color: #d6fdf0;
+    padding: 20px;
+    border-radius: 12px;
+}
+p{
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: #a3a3a3;
+    line-height: 1.6;
+}
+</style>
+<body>
+    <div class="container">
+    <h1>Welcome to Agrimate 🌱</h1><br>
+    <form action="{{ url_for('language') }}">
+    <button type="submit"> Start </button>
+    </form>
+    </div>
+    <!-- Hidden About Section (scrolls when clicked) -->
+    <div id="about" class="about-section">
+        <h2>About Agrimate</h2>
+        <p>🍀 Agrimate is a smart farming assistant that guides farmers with crop suggestions, fertilizer recommendations, and price predictions to help improve productivity.</p><br>
+        <p>🍀 Agrimate provide a seamless experience with full language translation, enabling accessibility for regional users with minimal digital literacy.</p><br>
+        <p>🍀 It support smart decision-making by analyzing user inputs like land type, season, and crop type, and generating personalized recommendations.</p>
+    </div>
+</body>
+</html>

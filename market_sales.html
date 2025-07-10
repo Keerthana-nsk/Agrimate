@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ trans['market_title'] if 'market_title' in trans else 'Market Sales' }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<style>
+    .container {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    padding: 40px;
+    width: 100%;
+    max-width: 600px;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    margin-right:20px;
+}
+h2 {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+p{
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: #a3a3a3;
+    line-height: 1.6;
+}
+button {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 30px;
+    font-size: 1rem;
+    background: linear-gradient(to right, #00c6ff, #0072ff);
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    margin-bottom: 20px;
+}
+
+button:hover {
+    background: linear-gradient(to right, #0072ff, #00c6ff);
+}
+
+       .tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .tab-button {
+            padding: 10px 20px;
+            background: #52b788;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            margin: 0 10px;
+            cursor: pointer;
+        }
+
+        .tab-button.active {
+            background-color: #2d6a4f;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        table {
+            margin: auto;
+            border-collapse: collapse;
+            width: 80%;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 12px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #40916c;
+            color: white;
+        }
+</style>
+<body>
+    <div class="container">
+        <h2>{{ trans['market_summary'] if 'market_summary' in trans else 'Market Price Summary' }}</h2>
+
+        <p><strong>{{ trans['name'] if 'name' in trans else 'Name' }}:</strong> {{ session['username'] }}</p><br>
+        <p><strong>{{ trans['email'] if 'email' in trans else 'Email' }}:</strong> {{ session['email'] }}</p><br>
+        <p><strong>{{ trans['crop'] if 'crop' in trans else 'Crop' }}:</strong> {{ session['crop'] }}</p><br>
+        <p><strong>{{ trans['predicted_price'] if 'predicted_price' in trans else 'Predicted Price' }}:</strong> ₹{{ price }} per unit</p><br>
+
+        <p>✅ {{ trans['thank_you'] if 'thank_you' in trans else 'Thank you for using Agrimate!' }}</p><br>
+        
+        <a href="{{ url_for('download_summary') }}">
+            <button style="margin-top: 20px;">📄 Download PDF</button>
+        </a>
+
+        <div class="tabs">
+        <button class="tab-button active" onclick="showTab('past')">Past Prices</button>
+        <button class="tab-button" onclick="showTab('current')">Current Price</button>
+        <button class="tab-button" onclick="showTab('future')">Future Prediction</button>
+    </div>
+
+    <div id="past" class="tab-content active">
+        <h3>Past Crop Prices</h3>
+        <table>
+            <tr><th>Crop</th><th>Month</th><th>Price (₹)</th></tr>
+            <tr><td>Tomato</td><td>March</td><td>38</td></tr>
+            <tr><td>Brinjal</td><td>April</td><td>34</td></tr>
+            <tr><td>Mango</td><td>May</td><td>55</td></tr>
+            <tr><td>Tea</td><td>June</td><td>180</td></tr>
+        </table>
+    </div>
+
+    <div id="current" class="tab-content">
+        <h3>Current Predicted Price</h3>
+        <p><strong>Crop:</strong> {{ session.get('crop', 'tomato') }}</p>
+        <p><strong>Predicted Price:</strong> ₹{{ price }} per unit</p>
+    </div>
+
+    <div id="future" class="tab-content">
+        <h3>Future Crop Price Prediction</h3>
+        <table>
+            <tr><th>Crop</th><th>Month</th><th>Predicted Price (₹)</th></tr>
+            <tr><td>{{ session.get('crop', 'tomato') }}</td><td>Next Month</td><td>₹{{ price + 5 }}</td></tr>
+            <tr><td>{{ session.get('crop', 'tomato') }}</td><td>2 Months Ahead</td><td>₹{{ price + 8 }}</td></tr>
+        </table>
+    </div>
+    
+    <script>
+        function showTab(id) {
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Select Season</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h2 {
+            font-size: 2em;
+            margin-bottom: 30px;
+            margin-right: 20px;
+            color: white;
+        }
+
+        .image-options {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+        }
+
+        .image-options label {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            border: 2px solid transparent;
+            padding: 15px;
+            border-radius: 10px;
+            transition: 0.3s;
+            background-color: #ffffff;
+        }
+
+        .image-options input[type="radio"] {
+            display: none;
+        }
+
+        .image-options img {
+            width: 160px;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        .image-options label:hover {
+            border-color: #40916c;
+            background-color: #e9f5ec;
+        }
+
+        .image-options input[type="radio"]:checked + img {
+            border: 4px solid #2d6a4f;
+            transform: scale(1.05);
+        }
+
+        button {
+            background: linear-gradient(to right, #00c6ff, #0072ff);
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            font-size: 15px;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            margin-top: 20px;
+            width: 100%;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background: linear-gradient(to right, #0072ff, #00c6ff);
+        }
+    </style>
+<body>
+    <h2>{{ trans['season_title'] }}</h2>
+    <form method="POST">
+        <div class="image-options">
+            <label>
+                <input type="radio" name="season" value="summer" required>
+                <img src="{{ url_for('static', filename='images/summer.jpg') }}" alt="Summer">
+                <span>{{ trans['summer'] }}</span>
+            </label>
+            <label>
+                <input type="radio" name="season" value="winter">
+                <img src="{{ url_for('static', filename='images/winter.jpg') }}" alt="Winter">
+                <span>{{ trans['winter'] }}</span>
+            </label>
+            <label>
+                <input type="radio" name="season" value="spring">
+                <img src="{{ url_for('static', filename='images/spring.jpg') }}" alt="Spring">
+                <span>{{ trans['spring'] }}</span>
+            </label>
+            <label>
+                <input type="radio" name="season" value="autumn">
+                <img src="{{ url_for('static', filename='images/autumn.jpg') }}" alt="Autumn">
+                <span>{{ trans['autumn'] }}</span>
+            </label>
+        </div>
+        <button type="submit">{{ trans['choose_season'] }}</button>
+    </form>
+</body>
+</html>
