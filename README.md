@@ -16,5 +16,3 @@ schedules.
 ➢ Real-Time Guidance: The platform will provide ongoing advice on crop 
 care, pest control, and seasonal planting tips, using real-time weather 
 data and trends.
-
-This is my personal portfolio website showcasing my skills, projects, and experience. It is designed to be responsive, interactive, and professional, making it easier for visitors to explore my work and get in touch with me.
